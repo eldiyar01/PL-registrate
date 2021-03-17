@@ -1,0 +1,40 @@
+{% extends 'users/sign_up.html' %}
+
+{% block form %}
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Sign in form</h2>
+        <p class="lead">Please fill in all the fields</p>
+    </div>
+    <div class="row justify-content-md-center mb-5">
+        <div class="col-md-4">
+            {% if form.errors %}
+                <div class="alert alert-danger pl-25">
+                    <p class="form-error">{{ form.errors }}</p>
+                </div>
+            {% endif %}
+            <form class="needs-validation" method="post">
+                <div class="col-12 mb-2">
+                    {{ form.username.label }}
+                    {{ form.username }}
+                </div>
+                <div class="col-12 mb-2">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                </div>
+                <div class="col-12 mb-2">
+                    <hr class="mb-4">
+                    {% csrf_token %}
+                    <button class="btn btn-dark btn btn-block" type="submit">Sign in</button>
+                </div>
+            </form>
+            <div class="text-center mt-3 mb-5">
+                Don't have an account at Our site?
+                <a href="{% url 'users:sign_up' %}">Sign up</a>
+                <br>
+                <a href="{% url 'users:password_reset' %}" class="small">Forgot the password?</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
