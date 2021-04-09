@@ -1,6 +1,9 @@
+import token
+
+from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetDoneView, PasswordResetView, \
     PasswordResetConfirmView, PasswordResetCompleteView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
@@ -11,10 +14,19 @@ def success(request):
     return render(request, 'users/success.html')
 
 
+def sign_up_done(request):
+    return render(request, 'users/sign_up_done.html')
+
+
+def play(request, username):
+    print(username)
+    return render(request, 'users/play.html')
+
+
 class SignUp(CreateView):
     template_name = 'users/sign_up.html'
     form_class = SignUpForm
-    success_url = reverse_lazy('users:success')
+    success_url = reverse_lazy('users:sign_up_done')
 
 
 class SignIn(LoginView):

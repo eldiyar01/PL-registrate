@@ -1,0 +1,10 @@
+{% extends 'users/sign_up.html' %}
+
+{% block form %}
+{% if user.is_authenticated %}
+<div class="container text-center p-5" >
+    OK
+</div>
+{% endif %}
+{% endblock %}
+           

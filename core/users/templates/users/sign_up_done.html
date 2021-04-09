@@ -4,10 +4,9 @@
 {% if user.is_authenticated %}
 <div class="container text-center p-5" >
 	<div class="alert-success m-5 p-5 pl-25">
-		<p class="">Welcome <strong>{{ user.username }}</strong>! We glad to see you)</p>
-		<a href="{% url 'users:play' user.username %}">Please! click here to play</a>
-		<br>
-		<a href="{% url 'users:sign_out' %}">Sign out</a>
+		<p class="">Success, welcome!
+			<a href="{% url 'users:sign_in' %}">Please Sign in </a>
+		</p>
 	</div>
 </div>
 {% else %}
@@ -18,4 +17,3 @@
 </div>
 {% endif %}
 {% endblock %}
-           
